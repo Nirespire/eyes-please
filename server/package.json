@@ -4,11 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Sanjay Nair <email@sanjaynair.dev>",
   "license": "MIT",
   "dependencies": {
-    "@octokit/rest": "^17.9.2"
+    "@octokit/rest": "^17.9.2",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }
