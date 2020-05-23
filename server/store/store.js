@@ -1,8 +1,7 @@
+const store = require('./store.json')
+
 function getWatchedRepos() {
-    return [
-        {owner: "Nirespire", repo: "nirespire.github.io"},
-        {owner: "joeattardi", repo: "github-pr-dashboard"}
-    ]
+    return store.data
 }
 
 module.exports = { getWatchedRepos }

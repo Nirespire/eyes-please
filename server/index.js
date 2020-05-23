@@ -3,9 +3,9 @@ require('dotenv').config()
 const { getPullRequests } = require("./github/github")
 
 const app = express()
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3001
 
-app.get('/', async (req, res) => {
+app.get('/prs', async (req, res) => {
     console.log("/")
     res.send(await getPullRequests())
 })
