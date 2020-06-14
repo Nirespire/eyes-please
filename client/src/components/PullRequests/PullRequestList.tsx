@@ -46,15 +46,15 @@ function PullRequestList() {
     }, []);
 
     const renderLoadingPullRequests = (numLoadingCards = 4) => {
-        return Array(numLoadingCards).fill(1).map(i => {
-            return <Card bordered={false} loading={true}></Card>
+        return Array(numLoadingCards).fill(1).map((i,j) => {
+            return <Card key={j} bordered={false} loading={true}></Card>
         })
     }
 
     const renderPullRequestsFromApiResponse = (apiResponse: IApiResponse[]) => {
         return apiResponse && apiResponse.map(repo => {
-            return repo.pullRequests.map(pr => {
-                return <PullRequest title={pr.title} number={pr.number} owner={repo.owner} repo={repo.repo} avatarUrl={pr.user.avatar_url} user={pr.user.login} userUrl={pr.user.html_url} prUrl={pr.html_url} />
+            return repo.pullRequests.map((pr, i) => {
+                return <PullRequest key={i} title={pr.title} number={pr.number} owner={repo.owner} repo={repo.repo} avatarUrl={pr.user.avatar_url} user={pr.user.login} userUrl={pr.user.html_url} prUrl={pr.html_url} />
             })
         })
     }

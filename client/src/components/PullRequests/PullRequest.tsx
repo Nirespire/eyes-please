@@ -1,13 +1,13 @@
 import React from 'react';
 import { Card, Avatar, Tag } from 'antd'
-import {
-  CheckCircleOutlined,
-  SyncOutlined,
-  CloseCircleOutlined,
-  ExclamationCircleOutlined,
-  ClockCircleOutlined,
-  MinusCircleOutlined,
-} from '@ant-design/icons';
+// import {
+//   CheckCircleOutlined,
+//   SyncOutlined,
+//   CloseCircleOutlined,
+//   ExclamationCircleOutlined,
+//   ClockCircleOutlined,
+//   MinusCircleOutlined,
+// } from '@ant-design/icons';
 const { Meta } = Card;
 
 
@@ -29,7 +29,7 @@ const PullRequest = ({ title, owner, repo, number, avatarUrl, user, userUrl, prU
     <Card hoverable bordered={false}>
       <Meta
         avatar={<Avatar src={avatarUrl} />}
-        title={user + ' ' + owner + '/' + repo + ' ' + '#' + number}
+        title={`${user} ${owner}/${repo} #${number}`}
         description={user}
       />
       {title}
