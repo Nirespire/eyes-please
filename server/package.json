@@ -2,9 +2,14 @@
   "name": "eyes-please",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "dev": "nodemon index.js",
+    "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
+    "build": "tsc",
+    "prestart": "npm run build",
+    "start": "node .",
+    "dev": "nodemon",
+    "start:dev": "node --inspect=5858 -r ts-node/register ./src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Sanjay Nair <email@sanjaynair.dev>",
@@ -15,6 +20,14 @@
     "express": "^4.17.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "@octokit/types": "^5.0.1",
+    "@types/express": "^4.17.6",
+    "@types/node": "^14.0.13",
+    "eslint": "^7.3.0",
+    "eslint-plugin-import": "^2.21.2",
+    "nodemon": "^2.0.4",
+    "ts-node": "^8.10.2",
+    "tslint": "^6.1.2",
+    "typescript": "^3.9.5"
   }
 }
