@@ -1,4 +1,4 @@
-import { ReposConfig, RepoConfig, GetPullRequestsListResponse } from "../types/types"
+import { Config, RepoConfig, GetPullRequestsListResponse } from "../types/types"
 
 export {}
 import { getWatchedRepoConfig } from "../config/config"
