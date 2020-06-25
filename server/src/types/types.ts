@@ -23,7 +23,6 @@ export interface Config {
     preferences: Preferences
     repos: RepoConfig[],
     repoRegexes: string[]
-
 }
 
 export type GetPullRequestsListResponse = GetResponseTypeFromEndpointMethod<
