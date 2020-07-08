@@ -1,5 +1,7 @@
 import React from 'react';
 import { Card, Avatar, Tag } from 'antd'
+import { IPullRequestReview } from '../../types/types'
+import { green, grey } from '@ant-design/colors'
 // import {
 //   CheckCircleOutlined,
 //   SyncOutlined,
@@ -20,20 +22,58 @@ type PullRequestProps = {
   user: string,
   userUrl: string,
   prUrl: string,
+  mergeable: string,
+  reviews: IPullRequestReview[]
 }
 
 
-const PullRequest = ({ title, owner, repo, number, avatarUrl, user, userUrl, prUrl }: PullRequestProps) => {
+const PullRequest = ({ title, owner, repo, number, avatarUrl, user, mergeable, userUrl, prUrl, reviews }: PullRequestProps) => {
+
+  const count = {
+    approvals: 0,
+    comments: 0,
+    changes: 0
+  }
+
+  reviews.forEach(review => {
+    switch (review.state) {
+      case "APPROVED":
+        count.approvals++
+        break
+      case "CHANGES_REQUESTED":
+        count.changes++
+        break
+      case "COMMENTED":
+        count.comments++
+        break
+    }
+  })
+
+
+
+  const color = mergeable ? green : grey;
 
   return (
-    <Card hoverable bordered={false}>
+    <Card hoverable bordered={false}
+          extra={`${owner}/${repo} #${number}`}
+          style={{ 
+            backgroundColor: color[2],
+            marginTop: '1rem',
+            marginBottom: '1rem',
+          }}
+          headStyle={{backgroundColor: color[3]}}
+          bodyStyle={{backgroundColor: color[2]}}
+          >
+            
       <Meta
         avatar={<Avatar src={avatarUrl} />}
-        title={`${user} ${owner}/${repo} #${number}`}
+        title={title}
         description={user}
       />
-      {title}
-      <Tag color="default">default</Tag>
+      <br/>
+      <Tag color="success">{count.approvals}</Tag>
+      <Tag color="error">{count.changes}</Tag>
+      <Tag color="default">{count.comments}</Tag>
     </Card>
   )
 }

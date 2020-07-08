@@ -4,6 +4,13 @@ export interface IUserDetails {
     login: string,
 }
 
+export interface IPullRequestReview {
+    id: number,
+    state: string,
+    user: string,
+    submittedAt: string
+}
+
 export interface IPullRequestDetails {
     title: string,
     number: number,
@@ -13,6 +20,8 @@ export interface IPullRequestDetails {
     draft: boolean,
     html_url: string,
     user: IUserDetails,
+    mergeable: string,
+    reviews: IPullRequestReview[]
 }
 
 export type IApiResponse = {

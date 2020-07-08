@@ -30,7 +30,7 @@ function PullRequestList() {
     const renderPullRequestsFromApiResponse = (apiResponse: IApiResponse[]) => {
         return apiResponse && apiResponse.map(repo => {
             return repo.pullRequests.map((pr, i) => {
-                return <PullRequest key={i} title={pr.title} number={pr.number} owner={repo.owner} repo={repo.repo} avatarUrl={pr.user.avatar_url} user={pr.user.login} userUrl={pr.user.html_url} prUrl={pr.html_url} />
+                return <PullRequest key={i} title={pr.title} number={pr.number} owner={repo.owner} repo={repo.repo} avatarUrl={pr.user.avatar_url} user={pr.user.login} userUrl={pr.user.html_url} prUrl={pr.html_url} mergeable={pr.mergeable} reviews={pr.reviews} />
             })
         })
     }

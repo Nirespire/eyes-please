@@ -1,7 +1,5 @@
-
-import { RepoConfig, GetPullRequestsListResponse, GetPullRequestResponse, GetPullRequestReviewsResponse } from "../types/types"
-
 export { }
+import { RepoConfig, GetPullRequestsListResponse, GetPullRequestResponse, GetPullRequestReviewsResponse } from "../types/types"
 import { getWatchedRepoConfig } from "../config/config"
 import { Octokit } from "@octokit/rest"
 
@@ -33,9 +31,9 @@ export async function getPullRequests() {
 
             const reviews = reviewsResponse.data.map( review => {
                 return {
+                    user: review.user.login,
                     id: review.id,
                     state: review.state,
-                    user: review.user.login,
                     submitted_at: review.submitted_at
                 }
             })
