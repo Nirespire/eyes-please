@@ -17,3 +17,11 @@ export interface ReposConfig {
 export type GetPullRequestsListResponse = GetResponseTypeFromEndpointMethod<
     typeof octokit.pulls.list
 >;
+
+export type GetPullRequestResponse = GetResponseTypeFromEndpointMethod<
+    typeof octokit.pulls.get
+>;
+
+export type GetPullRequestReviewsResponse = GetResponseTypeFromEndpointMethod<
+    typeof octokit.pulls.listReviews
+>;
