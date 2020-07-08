@@ -1,11 +1,15 @@
 export {}
 
-import { RepoConfig } from "../types/types"
+import { RepoConfig, Config } from "../types/types"
 
-import { fetchWatchedRepos } from "../store/store"
+import { fetchWatchedRepos, fetchConfig } from "../store/store"
 
 export function getWatchedRepoConfig(): RepoConfig[] {
-    return fetchWatchedRepos().data
+    return fetchWatchedRepos()
+}
+
+export function getConfig(): Config {
+    return fetchConfig()
 }
 
 // export async function addWatchedRepoConfig() {

@@ -3,31 +3,7 @@ import axios from 'axios';
 import { Row, Col, Card } from 'antd'
 
 import PullRequest from './PullRequest';
-
-interface IUserDetails {
-    avatar_url: string,
-    html_url: string,
-    login: string,
-}
-
-interface IPullRequestDetails {
-    title: string,
-    number: number,
-    state: string,
-    created_at: Date,
-    updated_at: Date,
-    draft: boolean,
-    html_url: string,
-    user: IUserDetails,
-}
-
-type IApiResponse = {
-    owner: string,
-    repo: string,
-    pullRequests: IPullRequestDetails[]
-}
-
-type ApiResponseArray = IApiResponse[]
+import { IApiResponse, ApiResponseArray } from './../../types/types'
 
 function PullRequestList() {
 

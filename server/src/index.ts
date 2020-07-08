@@ -2,7 +2,8 @@ import express from 'express'
 import dotenv from 'dotenv'
 dotenv.config()
 import { getPullRequests } from "./github/github"
-import { getWatchedRepoConfig } from "./config/config"
+import { getConfig } from "./config/config"
+
 
 const app = express()
 const port = process.env.PORT || 3001
@@ -16,7 +17,7 @@ app.get('/prs', async (req, res) => {
 app.get('/config', async(req, res) => {
     // tslint:disable-next-line:no-console
     console.log("GET /config")
-    res.send(await getWatchedRepoConfig())
+    res.send(await getConfig())
 })
 
 

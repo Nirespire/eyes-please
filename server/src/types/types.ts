@@ -10,8 +10,19 @@ export interface RepoConfig {
     repo: string
 }
 
-export interface ReposConfig {
-    data: RepoConfig[]
+export interface Preferences {
+    groupByRepo: boolean,
+    hoursToStale: number,
+    approvalsToMerge: number,
+    showRequestApprovals: boolean,
+    ignoreWeekends: boolean
+}
+
+export interface Config {
+    apiBaseUrl: string,
+    preferences: Preferences
+    repos: RepoConfig[],
+    repoRegexes: string[]
 }
 
 export type GetPullRequestsListResponse = GetResponseTypeFromEndpointMethod<

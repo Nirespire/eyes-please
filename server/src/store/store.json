@@ -1,5 +1,13 @@
 {
-    "data": [
+    "apiBaseUrl": "https://api.github.com",
+    "preferences": {
+        "groupByRepo": false,
+        "hoursToStale": 24,
+        "approvalsToMerge": 2,
+        "showRequestApprovals": false,
+        "ignoreWeekends": true
+    },
+    "repos": [
         {
             "owner": "Nirespire",
             "repo": "nirespire.github.io"
@@ -8,5 +16,8 @@
             "owner": "joeattardi",
             "repo": "github-pr-dashboard"
         }
+    ],
+    "repoRegexes": [
+         "*-something-*"
     ]
 }

@@ -1,11 +1,15 @@
 export {}
 
-import { ReposConfig } from "../types/types"
+import { Config, RepoConfig } from "../types/types"
 
 import stores from './store.json'
 
-const store:ReposConfig = stores
+const store:Config = stores
 
-export function fetchWatchedRepos(): ReposConfig {
+export function fetchConfig(): Config {
     return store
+}
+
+export function fetchWatchedRepos(): RepoConfig[] {
+    return fetchConfig().repos
 }
