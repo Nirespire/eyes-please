@@ -1,33 +1,40 @@
-import express from 'express'
+import express, { Request, Response } from 'express'
+import helmet from 'helmet'
+import bodyParser from 'body-parser'
 import dotenv from 'dotenv'
 dotenv.config()
 import { getPullRequests } from "./github/github"
-import { getConfig } from "./config/config"
-
+import { getConfig, addWatchedRepoConfig } from "./config/config"
+import morgan from 'morgan'
 
 const app = express()
 const port = process.env.PORT || 3001
 
+app.use(helmet())
+app.use(bodyParser.json());
+app.use(morgan('tiny'))
+
 app.get('/prs', async (req, res) => {
-    // tslint:disable-next-line:no-console
-    console.log("/prs")
     res.send(await getPullRequests())
 })
 
-app.get('/config', async(req, res) => {
-    // tslint:disable-next-line:no-console
-    console.log("GET /config")
-    res.send(await getConfig())
+app.get('/config', async (req, res) => {
+    try {
+        res.send(await getConfig())
+    } catch (e) {
+        res.status(500).send(JSON.stringify(e))
+    }
 })
 
-
-app.post('/add-repo', async(req, res) => {
-    // tslint:disable-next-line:no-console
-    console.log("POST /add-repo ", req.body)
-
+app.post('/add-repo', async (req: Request, res: Response) => {
+    // try {
+        addWatchedRepoConfig(req.body)
+        res.send('ok')
+    // } catch (e) {
+        // res.status(500).send(JSON.stringify(e))
+    // }
 })
 
-// tslint:disable-next-line:no-console
 app.listen(port, () => console.log(`Eyes Please server listening on port: ${port}`))
 
 

@@ -7,7 +7,8 @@ const octokit = new Octokit();
 
 export interface RepoConfig {
     owner: string,
-    repo: string
+    repo: string,
+    approvalsToMerge?: number
 }
 
 export interface Preferences {
@@ -19,6 +20,7 @@ export interface Preferences {
 }
 
 export interface Config {
+    id: string,
     apiBaseUrl: string,
     preferences: Preferences
     repos: RepoConfig[],

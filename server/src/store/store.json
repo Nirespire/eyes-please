@@ -1,4 +1,5 @@
 {
+    "id": "rootConfig",
     "apiBaseUrl": "https://api.github.com",
     "preferences": {
         "groupByRepo": false,
@@ -10,11 +11,13 @@
     "repos": [
         {
             "owner": "Nirespire",
-            "repo": "nirespire.github.io"
+            "repo": "nirespire.github.io",
+            "approvalsToMerge": 2
         },
         {
             "owner": "joeattardi",
-            "repo": "github-pr-dashboard"
+            "repo": "github-pr-dashboard",
+            "approvalsToMerge": 2
         }
     ],
     "repoRegexes": [
